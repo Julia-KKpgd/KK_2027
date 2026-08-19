@@ -18,20 +18,6 @@
             serif: ['Cinzel', 'serif'],
             display: ['Cinzel Decorative', 'serif'],
             sans: ['Montserrat', 'sans-serif'],
-          },
-          colors: {
-            amber: {
-              300: '#fcd34d',
-              400: '#fbbf24',
-              500: '#f59e0b',
-              600: '#d97706',
-            },
-            venetian: {
-              gold: '#D4AF37',
-              goldLight: '#F3E5AB',
-              crimson: '#6B0012',
-              velvet: '#1a0307',
-            }
           }
         }
       }
@@ -40,17 +26,14 @@
   <style>
     body { font-family: 'Montserrat', sans-serif; -webkit-tap-highlight-color: transparent; }
     .font-cinzel { font-family: 'Cinzel', serif; }
-    .font-display { font-family: 'Cinzel Decorative', serif; }
     
-    /* Elegant Venetian Gradient Borders & Backgrounds */
     .gold-gradient-text {
       background: linear-gradient(135deg, #FFF1B0 0%, #D4AF37 50%, #996515 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .gold-border {
-      border-image: linear-gradient(to bottom right, #D4AF37, #4A3510, #D4AF37) 1;
-    }
+    
+    /* Wenecki wzór tła */
     .mask-pattern {
       background-color: #0b0204;
       background-image: radial-gradient(#2a0810 0.75px, transparent 0.75px), radial-gradient(#2a0810 0.75px, #0b0204 0.75px);
@@ -61,14 +44,13 @@
 </head>
 <body class="mask-pattern text-slate-200 min-h-full flex flex-col antialiased selection:bg-amber-500 selection:text-black">
 
-  <!-- Tło ozdobne (złota łuna) -->
+  <!-- Złota łuna w tle -->
   <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-md h-64 bg-amber-600/10 blur-[100px] pointer-events-none"></div>
 
   <!-- Nagłówek wenecki -->
   <header class="sticky top-0 z-40 bg-slate-950/90 backdrop-blur-md border-b border-amber-900/40">
     <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
       <div class="flex items-center space-x-3">
-        <!-- Venetian Mask Icon Container -->
         <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-amber-700 via-amber-500 to-amber-200 p-[1px] shadow-lg shadow-amber-900/30">
           <div class="w-full h-full bg-slate-950 rounded-full flex items-center justify-center text-lg">
             🎭
@@ -83,14 +65,13 @@
         </div>
       </div>
       
-      <!-- Luksusowy znaczek sali -->
       <div class="bg-amber-950/40 border border-amber-700/30 rounded-full px-3 py-1 flex items-center space-x-1.5">
         <span class="text-[10px] font-semibold text-amber-300 font-cinzel">Palazzo Reale</span>
       </div>
     </div>
   </header>
 
-  <!-- Kontener główny -->
+  <!-- Treść Główna -->
   <main class="flex-1 max-w-md w-full mx-auto p-4 pb-28 space-y-5 relative z-10">
 
     <!-- ================= TAB 1: STRONA GŁÓWNA ================= -->
@@ -98,7 +79,6 @@
       
       <!-- Baner Powitalny -->
       <div class="relative overflow-hidden rounded-2xl border border-amber-500/30 bg-gradient-to-b from-amber-950/40 via-slate-900/90 to-slate-950 p-6 shadow-2xl shadow-black">
-        <div class="absolute -right-8 -bottom-8 w-36 h-36 bg-amber-500/10 rounded-full blur-2xl"></div>
         <div class="relative z-10 space-y-3 text-center">
           <div class="inline-block px-3 py-0.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-300 text-[10px] font-cinzel font-bold tracking-widest uppercase">
             ✨ Il Carnevale di Venezia ✨
@@ -107,14 +87,13 @@
             Noc Tajemnic & Elegancji
           </h2>
           <p class="text-xs text-amber-100/80 leading-relaxed font-light">
-            Witamy na tegorocznym Balu Maskowym. Załóż maskę, ukryj tożsamość i zatrac się w magii weneckiej nocy.
+            Witamy na Balu Maskowym. Załóż maskę, ukryj tożsamość i zatrac się w magii weneckiej nocy.
           </p>
         </div>
       </div>
 
-      <!-- Informacje organizacyjne (Wi-Fi & Dress Code) -->
+      <!-- Informacje organizacyjne -->
       <div class="grid grid-cols-2 gap-3">
-        
         <!-- Dress Code Card -->
         <div class="bg-slate-900/80 border border-amber-900/30 rounded-xl p-3.5 space-y-1 backdrop-blur-sm">
           <div class="w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 mb-2">
@@ -134,10 +113,9 @@
           <p class="text-xs font-medium text-amber-100 truncate">Venezia_Gala</p>
           <span class="text-[10px] text-amber-200/50 block">Hasło: brak</span>
         </div>
-
       </div>
 
-      <!-- Dodawanie zdjęć (Google Forms) -->
+      <!-- Galeria zdjęć -->
       <div class="relative overflow-hidden rounded-2xl border border-amber-500/40 bg-gradient-to-r from-amber-950 via-red-950 to-slate-950 p-5 shadow-xl space-y-3">
         <div class="flex items-center justify-between">
           <div class="space-y-1 max-w-[80%]">
@@ -146,7 +124,7 @@
             </span>
             <h3 class="font-bold text-sm font-cinzel text-amber-100">Uwiecznij swoją tajemnicę</h3>
             <p class="text-xs text-amber-200/70 leading-relaxed">
-              Dodaj zdjęcia kreacji i masek do wspólnego, bezpiecznego albumu balowego.
+              Dodaj zdjęcia kreacji i masek do wspólnego albumu balowego.
             </p>
           </div>
           <div class="w-12 h-12 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-2xl shrink-0">
@@ -154,12 +132,9 @@
           </div>
         </div>
 
-        <!-- LINK DO FORMULARZA GOOGLE - PODMIEŃ TUTAJ -->
+        <!-- PODMIEŃ LINK DO GOOGLE FORMS BELOW -->
         <a href="https://forms.google.com" target="_blank" rel="noopener noreferrer" 
            class="inline-flex items-center justify-center w-full py-3 px-4 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-amber-600 text-slate-950 font-bold text-xs uppercase tracking-wider shadow-lg shadow-amber-950 hover:brightness-110 active:scale-[0.98] transition-all gap-2">
-          <svg class="w-4 h-4 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
-          </svg>
           Prześlij zdjęcie z Balu
         </a>
       </div>
@@ -168,130 +143,82 @@
 
     <!-- ================= TAB 2: HARMONOGRAM ================= -->
     <section id="tab-schedule" class="tab-content hidden space-y-3">
-      
       <div class="flex items-center justify-between mb-2 px-1">
         <div>
           <h2 class="text-base font-bold font-cinzel text-amber-200">Program Balu</h2>
           <p class="text-xs text-amber-500/70">Harmonogram wieczoru weneckiego</p>
         </div>
-        <span class="text-[10px] bg-amber-950/60 border border-amber-800/40 px-2.5 py-1 rounded-full text-amber-300 font-cinzel">
-          Noc Róż
-        </span>
       </div>
 
-      <!-- Schedule Timeline -->
       <div class="space-y-3">
-
-        <!-- Item 1 -->
         <div class="bg-slate-900/80 border border-amber-900/30 rounded-xl p-4 flex gap-3.5 items-start backdrop-blur-sm">
-          <div class="bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold font-cinzel px-2.5 py-1 rounded-lg shrink-0 mt-0.5">
-            19:00
-          </div>
-          <div class="space-y-1 min-w-0 flex-1">
+          <div class="bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold font-cinzel px-2.5 py-1 rounded-lg shrink-0">19:00</div>
+          <div class="space-y-1">
             <h4 class="text-xs font-bold text-amber-100 font-cinzel">Przywitanie Gości & Lampka Prosecco</h4>
-            <p class="text-[11px] text-amber-200/60 leading-relaxed">Czerwony dywan, powitalne toast oraz zdjęcia na ściance masek.</p>
-            <div class="text-[10px] text-amber-500/60 flex items-center gap-1 pt-1 font-cinzel">
-              📍 Salone d'Onore
-            </div>
+            <p class="text-[11px] text-amber-200/60 leading-relaxed">Czerwony dywan oraz toast powitalny.</p>
+            <div class="text-[10px] text-amber-500/60 font-cinzel">📍 Salone d'Onore</div>
           </div>
         </div>
 
-        <!-- Item 2 -->
         <div class="bg-slate-900/80 border border-amber-900/30 rounded-xl p-4 flex gap-3.5 items-start backdrop-blur-sm">
-          <div class="bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold font-cinzel px-2.5 py-1 rounded-lg shrink-0 mt-0.5">
-            20:30
-          </div>
-          <div class="space-y-1 min-w-0 flex-1">
-            <h4 class="text-xs font-bold text-amber-100 font-cinzel">Uroczysty Walce Otwarcia</h4>
-            <p class="text-[11px] text-amber-200/60 leading-relaxed">Oficjalny taniec inauguracyjny i pokaz tańca dworskiego.</p>
-            <div class="text-[10px] text-amber-500/60 flex items-center gap-1 pt-1 font-cinzel">
-              📍 Główna Sala Balowa
-            </div>
+          <div class="bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold font-cinzel px-2.5 py-1 rounded-lg shrink-0">20:30</div>
+          <div class="space-y-1">
+            <h4 class="text-xs font-bold text-amber-100 font-cinzel">Uroczysty Walc Otwarcia</h4>
+            <p class="text-[11px] text-amber-200/60 leading-relaxed">Oficjalny taniec inauguracyjny.</p>
+            <div class="text-[10px] text-amber-500/60 font-cinzel">📍 Główna Sala Balowa</div>
           </div>
         </div>
 
-        <!-- Item 3 -->
         <div class="bg-slate-900/80 border border-amber-900/30 rounded-xl p-4 flex gap-3.5 items-start backdrop-blur-sm">
-          <div class="bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold font-cinzel px-2.5 py-1 rounded-lg shrink-0 mt-0.5">
-            23:00
-          </div>
-          <div class="space-y-1 min-w-0 flex-1">
+          <div class="bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold font-cinzel px-2.5 py-1 rounded-lg shrink-0">23:00</div>
+          <div class="space-y-1">
             <h4 class="text-xs font-bold text-amber-100 font-cinzel">Konkurs na Najpiękniejszą Maskę</h4>
-            <p class="text-[11px] text-amber-200/60 leading-relaxed">Głosowanie gości oraz wręczenie statuetek weneckich.</p>
-            <div class="text-[10px] text-amber-500/60 flex items-center gap-1 pt-1 font-cinzel">
-              📍 Scena Główna
-            </div>
+            <p class="text-[11px] text-amber-200/60 leading-relaxed">Głosowanie oraz wyłonienie zwycięzców.</p>
+            <div class="text-[10px] text-amber-500/60 font-cinzel">📍 Scena Główna</div>
           </div>
         </div>
-
-        <!-- Item 4 -->
-        <div class="bg-slate-900/80 border border-amber-900/30 rounded-xl p-4 flex gap-3.5 items-start backdrop-blur-sm">
-          <div class="bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold font-cinzel px-2.5 py-1 rounded-lg shrink-0 mt-0.5">
-            00:00
-          </div>
-          <div class="space-y-1 min-w-0 flex-1">
-            <h4 class="text-xs font-bold text-amber-100 font-cinzel">Rytuał Zdjęcia Masek & Pokaz Światła</h4>
-            <p class="text-[11px] text-amber-200/60 leading-relaxed">Odsłonięcie tożsamości i szampańska zabawa do białego rana.</p>
-            <div class="text-[10px] text-amber-500/60 flex items-center gap-1 pt-1 font-cinzel">
-              📍 Cały Pałac
-            </div>
-          </div>
-        </div>
-
       </div>
     </section>
 
     <!-- ================= TAB 3: OGŁOSZENIA ================= -->
     <section id="tab-news" class="tab-content hidden space-y-3">
-      
       <div class="flex items-center justify-between mb-2 px-1">
         <div>
-          <h2 class="text-base font-bold font-cinzel text-amber-200">Wiadomości Balowe</h2>
-          <p class="text-xs text-amber-500/70">Ogłoszenia Herolda na żywo</p>
+          <h2 class="text-base font-bold font-cinzel text-amber-200">Wieści Herolda</h2>
+          <p class="text-xs text-amber-500/70">Ogłoszenia na żywo</p>
         </div>
-        <button onclick="fetchNews()" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-950/80 hover:bg-amber-900/80 border border-amber-700/50 text-[11px] font-medium text-amber-300 transition-colors active:scale-95 font-cinzel">
+        <button onclick="fetchNews()" class="px-2.5 py-1 rounded-full bg-amber-950/80 border border-amber-700/50 text-[11px] font-medium text-amber-300 font-cinzel">
           🔄 Odśwież
         </button>
       </div>
 
-      <!-- Container do newsów -->
       <div id="news-container" class="space-y-3">
-        <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 text-center space-y-2">
-          <div class="w-6 h-6 border-2 border-amber-400 border-t-transparent rounded-full animate-spin mx-auto"></div>
-          <p class="text-xs text-amber-200/60 font-cinzel">Odczytywanie wieści...</p>
-        </div>
+        <!-- Generowane z JS -->
       </div>
-
     </section>
 
   </main>
 
-  <!-- Dolny pasek nawigacyjny wenecki -->
+  <!-- Dolna nawigacja -->
   <nav class="fixed bottom-0 left-0 right-0 z-50 bg-slate-950/95 backdrop-blur-md border-t border-amber-900/40 py-2.5 px-6">
     <div class="max-w-md mx-auto flex justify-around items-center">
-      
-      <!-- Home Button -->
-      <button onclick="switchTab('home')" id="btn-home" class="nav-btn flex flex-col items-center space-y-1 text-amber-400 transition-colors">
+      <button onclick="switchTab('home')" id="btn-home" class="nav-btn flex flex-col items-center space-y-1 text-amber-400">
         <span class="text-lg">🏛️</span>
         <span class="text-[9px] font-bold font-cinzel tracking-wider uppercase">Główna</span>
       </button>
 
-      <!-- Schedule Button -->
-      <button onclick="switchTab('schedule')" id="btn-schedule" class="nav-btn flex flex-col items-center space-y-1 text-slate-500 hover:text-amber-200 transition-colors">
+      <button onclick="switchTab('schedule')" id="btn-schedule" class="nav-btn flex flex-col items-center space-y-1 text-slate-500">
         <span class="text-lg">📜</span>
         <span class="text-[9px] font-bold font-cinzel tracking-wider uppercase">Program</span>
       </button>
 
-      <!-- News Button -->
-      <button onclick="switchTab('news')" id="btn-news" class="nav-btn flex flex-col items-center space-y-1 text-slate-500 hover:text-amber-200 transition-colors">
+      <button onclick="switchTab('news')" id="btn-news" class="nav-btn flex flex-col items-center space-y-1 text-slate-500">
         <span class="text-lg">📣</span>
         <span class="text-[9px] font-bold font-cinzel tracking-wider uppercase">Herold</span>
       </button>
-
     </div>
   </nav>
 
-  <!-- Skrypt obsługi zakładek i Google Sheets -->
   <script>
     function switchTab(tabName) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
@@ -300,18 +227,11 @@
         el.classList.add('text-slate-500');
       });
 
-      const targetTab = document.getElementById('tab-' + tabName);
-      if (targetTab) targetTab.classList.remove('hidden');
+      document.getElementById('tab-' + tabName).classList.remove('hidden');
+      document.getElementById('btn-' + tabName).classList.add('text-amber-400');
+      document.getElementById('btn-' + tabName).classList.remove('text-slate-500');
 
-      const activeBtn = document.getElementById('btn-' + tabName);
-      if (activeBtn) {
-        activeBtn.classList.add('text-amber-400');
-        activeBtn.classList.remove('text-slate-500');
-      }
-
-      if (tabName === 'news') {
-        fetchNews();
-      }
+      if (tabName === 'news') fetchNews();
     }
 
     async function fetchNews() {
@@ -325,48 +245,31 @@
         const json = JSON.parse(text.substring(47, text.length - 2));
         const rows = json.table.rows;
 
-        if (!rows || rows.length === 0) {
-          container.innerHTML = `
-            <div class="bg-slate-900/80 border border-amber-900/30 rounded-xl p-5 text-center text-amber-200/60 text-xs font-cinzel">
-              Brak nowych obwieszczeń.
-            </div>`;
-          return;
-        }
-
         container.innerHTML = '';
-        const reversedRows = [...rows].reverse();
-        
-        reversedRows.forEach(row => {
+        [...rows].reverse().forEach(row => {
           const time = row.c && row.c[0] ? (row.c[0].v || '') : '';
           const message = row.c && row.c[1] ? (row.c[1].v || '') : '';
 
           if (message) {
-            const card = document.createElement('div');
-            card.className = 'bg-slate-900/80 border border-amber-900/40 rounded-xl p-4 space-y-1.5 backdrop-blur-sm relative overflow-hidden';
-            card.innerHTML = `
-              <div class="flex items-center justify-between">
-                <span class="inline-flex items-center gap-1 text-[9px] font-bold font-cinzel text-amber-300 bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded-full">
+            container.innerHTML += `
+              <div class="bg-slate-900/80 border border-amber-900/40 rounded-xl p-4 space-y-1.5 backdrop-blur-sm">
+                <span class="text-[9px] font-bold font-cinzel text-amber-300 bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded-full">
                   ⏱️ ${time || 'Obwieszczenie'}
                 </span>
+                <p class="text-xs text-amber-100/90 leading-relaxed font-light">${message}</p>
               </div>
-              <p class="text-xs text-amber-100/90 leading-relaxed pt-1 font-light">${message}</p>
             `;
-            container.appendChild(card);
           }
         });
-
       } catch (error) {
         container.innerHTML = `
           <div class="bg-amber-950/40 border border-amber-700/40 rounded-xl p-4 space-y-1.5">
             <div class="flex items-center gap-1.5 text-amber-300 font-bold text-xs font-cinzel">
-              📣 Obwieszczenie Przykładowe
+              📣 Obwieszczenie
             </div>
             <p class="text-xs text-amber-100/80 leading-relaxed font-light">
               Głosowanie na Najpiękniejszą Maskę Wenecką rozpocznie się dokładnie o godzinie 22:30 w Sali Głównej!
             </p>
-            <span class="text-[10px] text-amber-500/50 block pt-1 font-cinzel">
-              (Podepnij Google Sheets, aby wyświetlać własne ogłoszenia)
-            </span>
           </div>
         `;
       }
