@@ -4,43 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gran Gala di Venezia — Informator</title>
-  <!-- Tailwind CSS -->
+  
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            serif: ['Cinzel', 'serif'],
-            sans: ['Montserrat', 'sans-serif'],
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    body { font-family: 'Montserrat', sans-serif; -webkit-tap-highlight-color: transparent; }
-    .font-cinzel { font-family: 'Cinzel', serif; }
-    .gold-gradient-text {
-      background: linear-gradient(135deg, #FFF1B0 0%, #D4AF37 50%, #996515 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .mask-pattern {
-      background-color: #0b0204;
-      background-image: radial-gradient(#2a0810 0.75px, transparent 0.75px), radial-gradient(#2a0810 0.75px, #0b0204 0.75px);
-      background-size: 30px 30px;
-      background-position: 0 0, 15px 15px;
-    }
-  </style>
+  
+  <!-- Podłączenie własnego pliku CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body class="mask-pattern text-slate-200 min-h-full flex flex-col antialiased selection:bg-amber-500 selection:text-black">
 
-  <!-- Złota łuna w tle -->
   <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-md h-64 bg-amber-600/10 blur-[100px] pointer-events-none"></div>
 
   <!-- Nagłówek -->
@@ -67,7 +43,7 @@
   <!-- Kontener Główny -->
   <main class="flex-1 max-w-md w-full mx-auto p-4 pb-28 space-y-5 relative z-10">
 
-    <!-- ================= TAB 1: STRONA GŁÓWNA ================= -->
+    <!-- TAB 1: STRONA GŁÓWNA -->
     <section id="tab-home" class="tab-content space-y-4">
       <div class="relative overflow-hidden rounded-2xl border border-amber-500/30 bg-gradient-to-b from-amber-950/40 via-slate-900/90 to-slate-950 p-6 shadow-2xl text-center space-y-3">
         <div class="inline-block px-3 py-0.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-300 text-[10px] font-cinzel font-bold tracking-widest uppercase">
@@ -96,56 +72,49 @@
       </div>
     </section>
 
-    <!-- ================= TAB 2: HARMONOGRAM ================= -->
+    <!-- TAB 2: HARMONOGRAM -->
     <section id="tab-schedule" class="tab-content hidden space-y-3">
       <div class="flex items-center justify-between mb-2 px-1">
         <div>
           <h2 class="text-base font-bold font-cinzel text-amber-200">Program Balu</h2>
           <p class="text-xs text-amber-500/70">Harmonogram wieczoru weneckiego</p>
         </div>
-        <button onclick="fetchSchedule()" class="px-2.5 py-1 rounded-full bg-amber-950 border border-amber-700/50 text-[11px] font-medium text-amber-300 font-cinzel">
+        <button id="refresh-schedule-btn" class="px-2.5 py-1 rounded-full bg-amber-950 border border-amber-700/50 text-[11px] font-medium text-amber-300 font-cinzel">
           🔄 Odśwież
         </button>
       </div>
-
-      <div id="schedule-container" class="space-y-3">
-        <!-- Pobierane dynamicznie z zakładki Harmonogram -->
-      </div>
+      <div id="schedule-container" class="space-y-3"></div>
     </section>
 
-    <!-- ================= TAB 3: OGŁOSZENIA ORGANIZATORA ================= -->
+    <!-- TAB 3: OGŁOSZENIA -->
     <section id="tab-news" class="tab-content hidden space-y-3">
       <div class="flex items-center justify-between mb-2 px-1">
         <div>
           <h2 class="text-base font-bold font-cinzel text-amber-200">Wieści Herolda</h2>
           <p class="text-xs text-amber-500/70">Oficjalne ogłoszenia organizatorów</p>
         </div>
-        <button onclick="fetchNews()" class="px-2.5 py-1 rounded-full bg-amber-950 border border-amber-700/50 text-[11px] font-medium text-amber-300 font-cinzel">
+        <button id="refresh-news-btn" class="px-2.5 py-1 rounded-full bg-amber-950 border border-amber-700/50 text-[11px] font-medium text-amber-300 font-cinzel">
           🔄 Odśwież
         </button>
       </div>
-
-      <div id="news-container" class="space-y-3">
-        <!-- Pobierane dynamicznie z zakładki Ogłoszenia -->
-      </div>
+      <div id="news-container" class="space-y-3"></div>
     </section>
 
-    <!-- ================= TAB 4: FORUM GOŚCI ================= -->
+    <!-- TAB 4: FORUM GOŚCI -->
     <section id="tab-forum" class="tab-content hidden space-y-4">
       <div class="flex items-center justify-between mb-2 px-1">
         <div>
           <h2 class="text-base font-bold font-cinzel text-amber-200">Głos Gości</h2>
           <p class="text-xs text-slate-400">Publiczne pytania i wiadomości gości</p>
         </div>
-        <button onclick="fetchForum()" class="px-2.5 py-1 rounded-full bg-slate-900 border border-slate-700 text-[11px] font-medium text-slate-300">
+        <button id="refresh-forum-btn" class="px-2.5 py-1 rounded-full bg-slate-900 border border-slate-700 text-[11px] font-medium text-slate-300">
           🔄 Odśwież
         </button>
       </div>
 
-      <!-- Formularz Dodawania Wiadomości na Forum -->
       <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 space-y-3 shadow-lg">
         <span class="text-[10px] font-bold uppercase tracking-wider text-amber-400/80 block font-cinzel">Napisz na tablicy</span>
-        <form id="forum-form" onsubmit="sendForumMessage(event)" class="space-y-2.5">
+        <form id="forum-form" class="space-y-2.5">
           <input type="text" id="forum-author" placeholder="Twoje imię / Nick (opcjonalnie)" 
                  class="w-full bg-slate-950 border border-slate-700/60 rounded-xl px-3.5 py-2 text-xs text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-amber-500">
           <textarea id="forum-message" placeholder="Zadaj pytanie lub opublikuj wiadomość..." required rows="2"
@@ -157,208 +126,69 @@
         </form>
       </div>
 
-      <!-- Kontener na Wiadomości z Forum -->
-      <div id="forum-container" class="space-y-2.5 pt-1">
-        <!-- Pobierane dynamicznie z zakładki Forum -->
+      <div id="forum-container" class="space-y-2.5 pt-1"></div>
+    </section>
+
+    <!-- TAB 5: ZDJĘCIA -->
+    <section id="tab-photos" class="tab-content hidden space-y-4">
+      <div class="mb-2 px-1">
+        <h2 class="text-base font-bold font-cinzel text-amber-200">Wspólna Galeria</h2>
+        <p class="text-xs text-amber-500/70">Podziel się zdjęciami z dzisiejszego balu</p>
+      </div>
+
+      <div class="relative overflow-hidden rounded-2xl border border-amber-500/30 bg-slate-900/90 p-5 space-y-4 text-center backdrop-blur-sm shadow-xl">
+        <div class="w-12 h-12 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-2xl mx-auto">📸</div>
+        
+        <div class="space-y-1">
+          <h3 class="text-sm font-bold font-cinzel text-amber-100">Dodaj swoje kadry</h3>
+          <p class="text-xs text-slate-300 font-light leading-relaxed">
+            Zdjęcia trafią bezpośrednio do pamiątkowej galerii na Dysku Google Organizatorów.
+          </p>
+        </div>
+
+        <a id="google-photos-link" href="#" target="_blank" rel="noopener noreferrer" 
+           class="inline-flex items-center justify-center w-full py-3 px-4 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-amber-600 text-slate-950 font-bold text-xs font-cinzel uppercase tracking-wider shadow-lg shadow-amber-950/50 hover:brightness-110 active:scale-[0.98] transition-all gap-2">
+          <span>Prześlij Zdjęcia z Telefonu</span>
+          <span>➔</span>
+        </a>
+
+        <span class="text-[10px] text-slate-500 block">Wymaga zalogowania do konta Google na telefonie.</span>
       </div>
     </section>
 
   </main>
 
   <!-- Nawigacja Dolna -->
-  <nav class="fixed bottom-0 left-0 right-0 z-50 bg-slate-950/95 backdrop-blur-md border-t border-amber-900/40 py-2.5 px-4">
-    <div class="max-w-md mx-auto flex justify-around items-center">
-      <button onclick="switchTab('home')" id="btn-home" class="nav-btn flex flex-col items-center space-y-1 text-amber-400">
-        <span class="text-base">🏛️</span>
-        <span class="text-[9px] font-bold font-cinzel tracking-wider uppercase">Główna</span>
+  <nav class="fixed bottom-0 left-0 right-0 z-50 bg-slate-950/95 backdrop-blur-md border-t border-amber-900/40 py-2.5 px-2">
+    <div class="max-w-md mx-auto flex justify-between items-center">
+      <button data-tab="home" class="nav-btn flex-1 flex flex-col items-center space-y-1 text-amber-400">
+        <span class="text-sm">🏛️</span>
+        <span class="text-[8px] font-bold font-cinzel tracking-tight uppercase">Główna</span>
       </button>
 
-      <button onclick="switchTab('schedule')" id="btn-schedule" class="nav-btn flex flex-col items-center space-y-1 text-slate-500">
-        <span class="text-base">📜</span>
-        <span class="text-[9px] font-bold font-cinzel tracking-wider uppercase">Program</span>
+      <button data-tab="schedule" class="nav-btn flex-1 flex flex-col items-center space-y-1 text-slate-500">
+        <span class="text-sm">📜</span>
+        <span class="text-[8px] font-bold font-cinzel tracking-tight uppercase">Program</span>
       </button>
 
-      <button onclick="switchTab('news')" id="btn-news" class="nav-btn flex flex-col items-center space-y-1 text-slate-500">
-        <span class="text-base">📣</span>
-        <span class="text-[9px] font-bold font-cinzel tracking-wider uppercase">Herold</span>
+      <button data-tab="news" class="nav-btn flex-1 flex flex-col items-center space-y-1 text-slate-500">
+        <span class="text-sm">📣</span>
+        <span class="text-[8px] font-bold font-cinzel tracking-tight uppercase">Herold</span>
       </button>
 
-      <button onclick="switchTab('forum')" id="btn-forum" class="nav-btn flex flex-col items-center space-y-1 text-slate-500">
-        <span class="text-base">💬</span>
-        <span class="text-[9px] font-bold font-cinzel tracking-wider uppercase">Forum</span>
+      <button data-tab="forum" class="nav-btn flex-1 flex flex-col items-center space-y-1 text-slate-500">
+        <span class="text-sm">💬</span>
+        <span class="text-[8px] font-bold font-cinzel tracking-tight uppercase">Forum</span>
+      </button>
+
+      <button data-tab="photos" class="nav-btn flex-1 flex flex-col items-center space-y-1 text-slate-500">
+        <span class="text-sm">📸</span>
+        <span class="text-[8px] font-bold font-cinzel tracking-tight uppercase">Zdjęcia</span>
       </button>
     </div>
   </nav>
 
-  <!-- Skrypty Logiki -->
-  <script>
-    const SHEET_ID = '1ICfKQc2t11A7A8qa-0SIZuFaqX0XGYx_-yVysO0iP6w';
-    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby6RjkkQaGa7XkUN7f0AMMZcd6JGUwBgF-aM4LSU7Nnef9K5ZnvPh2URjUl6Vr2Rya-/exec';
-
-    function switchTab(tabName) {
-      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-      document.querySelectorAll('.nav-btn').forEach(el => {
-        el.classList.remove('text-amber-400');
-        el.classList.add('text-slate-500');
-      });
-
-      document.getElementById('tab-' + tabName).classList.remove('hidden');
-      document.getElementById('btn-' + tabName).classList.add('text-amber-400');
-      document.getElementById('btn-' + tabName).classList.remove('text-slate-500');
-
-      if (tabName === 'schedule') fetchSchedule();
-      if (tabName === 'news') fetchNews();
-      if (tabName === 'forum') fetchForum();
-    }
-
-    // Pobieranie Harmonogramu (Zakładka: Harmonogram)
-    async function fetchSchedule() {
-      const container = document.getElementById('schedule-container');
-      container.innerHTML = `<div class="text-center text-xs text-amber-200/50 py-4 font-cinzel">Ładowanie programu...</div>`;
-      
-      const sheetUrl = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=Harmonogram`;
-
-      try {
-        const res = await fetch(sheetUrl);
-        const text = await res.text();
-        const json = JSON.parse(text.substring(47, text.length - 2));
-        const rows = json.table.rows;
-
-        if (!rows || rows.length === 0) {
-          container.innerHTML = `<div class="text-center text-xs text-amber-200/50 py-4">Brak wpisów w harmonogramie.</div>`;
-          return;
-        }
-
-        container.innerHTML = '';
-        rows.forEach(row => {
-          const time = row.c && row.c[0] ? (row.c[0].v || '') : '--:--';
-          const title = row.c && row.c[1] ? (row.c[1].v || '') : '';
-          const desc = row.c && row.c[2] ? (row.c[2].v || '') : '';
-
-          if (title) {
-            container.innerHTML += `
-              <div class="bg-slate-900/80 border border-amber-900/30 rounded-xl p-4 flex gap-3.5 backdrop-blur-sm">
-                <div class="bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold font-cinzel px-2.5 py-1 rounded-lg h-fit shrink-0">${time}</div>
-                <div>
-                  <h4 class="text-xs font-bold text-amber-100 font-cinzel">${title}</h4>
-                  ${desc ? `<p class="text-[11px] text-amber-200/60 mt-0.5">${desc}</p>` : ''}
-                </div>
-              </div>`;
-          }
-        });
-      } catch (e) {
-        container.innerHTML = `<div class="text-center text-xs text-amber-500/70 py-4">Nie znaleziono zakładki "Harmonogram" w arkuszu.</div>`;
-      }
-    }
-
-    // Pobieranie Ogłoszeń (Zakładka: Ogłoszenia)
-    async function fetchNews() {
-      const container = document.getElementById('news-container');
-      container.innerHTML = `<div class="text-center text-xs text-amber-200/50 py-4 font-cinzel">Odczytywanie wieści...</div>`;
-      
-      const sheetUrl = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=Ogłoszenia`;
-
-      try {
-        const res = await fetch(sheetUrl);
-        const text = await res.text();
-        const json = JSON.parse(text.substring(47, text.length - 2));
-        const rows = json.table.rows;
-
-        if (!rows || rows.length === 0) {
-          container.innerHTML = `<div class="text-center text-xs text-amber-200/50 py-4">Brak nowych obwieszczeń.</div>`;
-          return;
-        }
-
-        container.innerHTML = '';
-        [...rows].reverse().forEach(row => {
-          const time = row.c && row.c[0] ? (row.c[0].v || '') : 'Herold';
-          const msg = row.c && row.c[1] ? (row.c[1].v || '') : '';
-
-          if (msg) {
-            container.innerHTML += `
-              <div class="bg-slate-900/80 border border-amber-900/40 rounded-xl p-4 space-y-1.5 backdrop-blur-sm">
-                <span class="inline-block text-[9px] font-bold font-cinzel text-amber-300 bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded-full">
-                  ⏱️ ${time}
-                </span>
-                <p class="text-xs text-amber-100/90 leading-relaxed font-light">${msg}</p>
-              </div>`;
-          }
-        });
-      } catch (e) {
-        container.innerHTML = `<div class="text-center text-xs text-amber-500/70 py-4">Nie znaleziono zakładki "Ogłoszenia" w arkuszu.</div>`;
-      }
-    }
-
-    // Pobieranie Wiadomości z Forum (Zakładka: Forum)
-    async function fetchForum() {
-      const container = document.getElementById('forum-container');
-      container.innerHTML = `<div class="text-center text-xs text-slate-500 py-4 font-cinzel">Pobieranie wpisów...</div>`;
-      
-      const sheetUrl = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=Forum`;
-
-      try {
-        const res = await fetch(sheetUrl);
-        const text = await res.text();
-        const json = JSON.parse(text.substring(47, text.length - 2));
-        const rows = json.table.rows;
-
-        if (!rows || rows.length === 0) {
-          container.innerHTML = `<div class="text-center text-xs text-slate-500 py-4">Brak wpisów. Bądź pierwszy!</div>`;
-          return;
-        }
-
-        container.innerHTML = '';
-        [...rows].reverse().forEach(row => {
-          const author = row.c && row.c[0] ? (row.c[0].v || 'Anonim') : 'Anonim';
-          const msg = row.c && row.c[1] ? (row.c[1].v || '') : '';
-
-          if (msg) {
-            container.innerHTML += `
-              <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-3.5 space-y-1 backdrop-blur-sm">
-                <div class="flex items-center justify-between">
-                  <span class="text-[11px] font-bold text-amber-300/90 flex items-center gap-1">👤 ${author}</span>
-                  <span class="text-[9px] text-slate-500">Gość Balu</span>
-                </div>
-                <p class="text-xs text-slate-300 font-light leading-relaxed">${msg}</p>
-              </div>`;
-          }
-        });
-      } catch (e) {
-        container.innerHTML = `<div class="text-center text-xs text-slate-500 py-4">Nie znaleziono zakładki "Forum" w arkuszu.</div>`;
-      }
-    }
-
-    // Wysyłanie Wiadomości na Forum
-    async function sendForumMessage(e) {
-      e.preventDefault();
-      const btn = document.getElementById('forum-btn');
-      const author = document.getElementById('forum-author').value;
-      const message = document.getElementById('forum-message').value;
-
-      btn.disabled = true;
-      btn.innerText = 'Publikowanie...';
-
-      try {
-        await fetch(APPS_SCRIPT_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ author: author, message: message })
-        });
-
-        document.getElementById('forum-form').reset();
-        setTimeout(() => {
-          fetchForum();
-          btn.disabled = false;
-          btn.innerText = '💬 Opublikuj wiadomość';
-        }, 1000);
-
-      } catch (error) {
-        alert('Błąd podczas wysyłania.');
-        btn.disabled = false;
-        btn.innerText = '💬 Opublikuj wiadomość';
-      }
-    }
-  </script>
+  <!-- Podłączenie własnego pliku JS -->
+  <script src="script.js"></script>
 </body>
 </html>
