@@ -1,0 +1,21 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #FFF1B0 0%, #D4AF37 50%, #996515 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.mask-pattern {
+  background-color: #0b0204;
+  background-image: radial-gradient(#2a0810 0.75px, transparent 0.75px), radial-gradient(#2a0810 0.75px, #0b0204 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
