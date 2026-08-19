@@ -98,35 +98,18 @@
 
     <!-- ================= TAB 2: HARMONOGRAM ================= -->
     <section id="tab-schedule" class="tab-content hidden space-y-3">
-      <div class="mb-2 px-1">
-        <h2 class="text-base font-bold font-cinzel text-amber-200">Program Balu</h2>
-        <p class="text-xs text-amber-500/70">Harmonogram wieczoru weneckiego</p>
+      <div class="flex items-center justify-between mb-2 px-1">
+        <div>
+          <h2 class="text-base font-bold font-cinzel text-amber-200">Program Balu</h2>
+          <p class="text-xs text-amber-500/70">Harmonogram wieczoru weneckiego</p>
+        </div>
+        <button onclick="fetchSchedule()" class="px-2.5 py-1 rounded-full bg-amber-950 border border-amber-700/50 text-[11px] font-medium text-amber-300 font-cinzel">
+          🔄 Odśwież
+        </button>
       </div>
 
-      <div class="space-y-3">
-        <div class="bg-slate-900/80 border border-amber-900/30 rounded-xl p-4 flex gap-3.5 backdrop-blur-sm">
-          <div class="bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold font-cinzel px-2.5 py-1 rounded-lg h-fit">19:00</div>
-          <div>
-            <h4 class="text-xs font-bold text-amber-100 font-cinzel">Przywitanie Gości & Lampka Prosecco</h4>
-            <p class="text-[11px] text-amber-200/60 mt-0.5">Toast powitalny oraz zdjęcia na ściance masek.</p>
-          </div>
-        </div>
-
-        <div class="bg-slate-900/80 border border-amber-900/30 rounded-xl p-4 flex gap-3.5 backdrop-blur-sm">
-          <div class="bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold font-cinzel px-2.5 py-1 rounded-lg h-fit">20:30</div>
-          <div>
-            <h4 class="text-xs font-bold text-amber-100 font-cinzel">Uroczysty Walc Otwarcia</h4>
-            <p class="text-[11px] text-amber-200/60 mt-0.5">Oficjalny taniec inauguracyjny w Sali Balowej.</p>
-          </div>
-        </div>
-
-        <div class="bg-slate-900/80 border border-amber-900/30 rounded-xl p-4 flex gap-3.5 backdrop-blur-sm">
-          <div class="bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold font-cinzel px-2.5 py-1 rounded-lg h-fit">23:00</div>
-          <div>
-            <h4 class="text-xs font-bold text-amber-100 font-cinzel">Konkurs na Najpiękniejszą Maskę</h4>
-            <p class="text-[11px] text-amber-200/60 mt-0.5">Głosowanie i wręczenie statuetek weneckich.</p>
-          </div>
-        </div>
+      <div id="schedule-container" class="space-y-3">
+        <!-- Pobierane dynamicznie z zakładki Harmonogram -->
       </div>
     </section>
 
@@ -143,7 +126,7 @@
       </div>
 
       <div id="news-container" class="space-y-3">
-        <!-- Generowane z JS z zakładki "Ogłoszenia" -->
+        <!-- Pobierane dynamicznie z zakładki Ogłoszenia -->
       </div>
     </section>
 
@@ -151,8 +134,8 @@
     <section id="tab-forum" class="tab-content hidden space-y-4">
       <div class="flex items-center justify-between mb-2 px-1">
         <div>
-          <h2 class="text-base font-bold font-cinzel text-amber-200">Forum pytań</h2>
-          <p class="text-xs text-slate-400">Publiczne pytania i wiadomości gości, każdy widzi co piszesz dlatego zachowuj sie kulturalnie.</p>
+          <h2 class="text-base font-bold font-cinzel text-amber-200">Głos Gości</h2>
+          <p class="text-xs text-slate-400">Publiczne pytania i wiadomości gości</p>
         </div>
         <button onclick="fetchForum()" class="px-2.5 py-1 rounded-full bg-slate-900 border border-slate-700 text-[11px] font-medium text-slate-300">
           🔄 Odśwież
@@ -163,7 +146,7 @@
       <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 space-y-3 shadow-lg">
         <span class="text-[10px] font-bold uppercase tracking-wider text-amber-400/80 block font-cinzel">Napisz na tablicy</span>
         <form id="forum-form" onsubmit="sendForumMessage(event)" class="space-y-2.5">
-          <input type="text" id="forum-author" placeholder="Napisz Imie, Nazwisko i KL" 
+          <input type="text" id="forum-author" placeholder="Twoje imię / Nick (opcjonalnie)" 
                  class="w-full bg-slate-950 border border-slate-700/60 rounded-xl px-3.5 py-2 text-xs text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-amber-500">
           <textarea id="forum-message" placeholder="Zadaj pytanie lub opublikuj wiadomość..." required rows="2"
                     class="w-full bg-slate-950 border border-slate-700/60 rounded-xl px-3.5 py-2 text-xs text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-amber-500 resize-none"></textarea>
@@ -176,7 +159,7 @@
 
       <!-- Kontener na Wiadomości z Forum -->
       <div id="forum-container" class="space-y-2.5 pt-1">
-        <!-- Generowane z JS z zakładki "Forum" -->
+        <!-- Pobierane dynamicznie z zakładki Forum -->
       </div>
     </section>
 
@@ -209,7 +192,6 @@
 
   <!-- Skrypty Logiki -->
   <script>
-    // === TUTAJ UZUPEŁNIJ SWOJE DANE GOOGLE ===
     const SHEET_ID = '1ICfKQc2t11A7A8qa-0SIZuFaqX0XGYx_-yVysO0iP6w';
     const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby6RjkkQaGa7XkUN7f0AMMZcd6JGUwBgF-aM4LSU7Nnef9K5ZnvPh2URjUl6Vr2Rya-/exec';
 
@@ -224,11 +206,52 @@
       document.getElementById('btn-' + tabName).classList.add('text-amber-400');
       document.getElementById('btn-' + tabName).classList.remove('text-slate-500');
 
+      if (tabName === 'schedule') fetchSchedule();
       if (tabName === 'news') fetchNews();
       if (tabName === 'forum') fetchForum();
     }
 
-    // Pobieranie Ogłoszeń Organizatora (Zakładka 1)
+    // Pobieranie Harmonogramu (Zakładka: Harmonogram)
+    async function fetchSchedule() {
+      const container = document.getElementById('schedule-container');
+      container.innerHTML = `<div class="text-center text-xs text-amber-200/50 py-4 font-cinzel">Ładowanie programu...</div>`;
+      
+      const sheetUrl = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=Harmonogram`;
+
+      try {
+        const res = await fetch(sheetUrl);
+        const text = await res.text();
+        const json = JSON.parse(text.substring(47, text.length - 2));
+        const rows = json.table.rows;
+
+        if (!rows || rows.length === 0) {
+          container.innerHTML = `<div class="text-center text-xs text-amber-200/50 py-4">Brak wpisów w harmonogramie.</div>`;
+          return;
+        }
+
+        container.innerHTML = '';
+        rows.forEach(row => {
+          const time = row.c && row.c[0] ? (row.c[0].v || '') : '--:--';
+          const title = row.c && row.c[1] ? (row.c[1].v || '') : '';
+          const desc = row.c && row.c[2] ? (row.c[2].v || '') : '';
+
+          if (title) {
+            container.innerHTML += `
+              <div class="bg-slate-900/80 border border-amber-900/30 rounded-xl p-4 flex gap-3.5 backdrop-blur-sm">
+                <div class="bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold font-cinzel px-2.5 py-1 rounded-lg h-fit shrink-0">${time}</div>
+                <div>
+                  <h4 class="text-xs font-bold text-amber-100 font-cinzel">${title}</h4>
+                  ${desc ? `<p class="text-[11px] text-amber-200/60 mt-0.5">${desc}</p>` : ''}
+                </div>
+              </div>`;
+          }
+        });
+      } catch (e) {
+        container.innerHTML = `<div class="text-center text-xs text-amber-500/70 py-4">Nie znaleziono zakładki "Harmonogram" w arkuszu.</div>`;
+      }
+    }
+
+    // Pobieranie Ogłoszeń (Zakładka: Ogłoszenia)
     async function fetchNews() {
       const container = document.getElementById('news-container');
       container.innerHTML = `<div class="text-center text-xs text-amber-200/50 py-4 font-cinzel">Odczytywanie wieści...</div>`;
@@ -262,11 +285,11 @@
           }
         });
       } catch (e) {
-        container.innerHTML = `<div class="text-center text-xs text-amber-500/70 py-4">Uzupełnij prawidłowe SHEET_ID w kodzie.</div>`;
+        container.innerHTML = `<div class="text-center text-xs text-amber-500/70 py-4">Nie znaleziono zakładki "Ogłoszenia" w arkuszu.</div>`;
       }
     }
 
-    // Pobieranie Wiadomości z Forum (Zakładka 2)
+    // Pobieranie Wiadomości z Forum (Zakładka: Forum)
     async function fetchForum() {
       const container = document.getElementById('forum-container');
       container.innerHTML = `<div class="text-center text-xs text-slate-500 py-4 font-cinzel">Pobieranie wpisów...</div>`;
@@ -301,7 +324,7 @@
           }
         });
       } catch (e) {
-        container.innerHTML = `<div class="text-center text-xs text-slate-500 py-4">Uzupełnij prawidłowe SHEET_ID w kodzie.</div>`;
+        container.innerHTML = `<div class="text-center text-xs text-slate-500 py-4">Nie znaleziono zakładki "Forum" w arkuszu.</div>`;
       }
     }
 
